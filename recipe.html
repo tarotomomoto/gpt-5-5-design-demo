@@ -6,212 +6,646 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://img.youtube.com data:; frame-src https://www.youtube-nocookie.com; connect-src 'none'; form-action 'none'; upgrade-insecure-requests"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; upgrade-insecure-requests"
     />
-    <title>GPT-5.5 LP制作レシピ</title>
+    <title>GPT-5.5 デザインデモ制作レシピ</title>
     <meta
       name="description"
-      content="GPT-5.5のプロモーションLPをCodexで作った制作過程、依頼の流れ、再利用できるデザインガイドをまとめた社内共有用ページ。"
+      content="GPT-5.5のデザインデモページをCodexで制作した流れと、別テーマにも使えるデザインガイドをまとめた制作レシピ。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      :root {
+        --accent-pink: #ee6f8f;
+        --accent-pink-deep: #d84f73;
+        --accent-pink-pale: #fde8ee;
+        --accent-mint: #65c4c5;
+        --accent-mint-pale: #e5f6f6;
+        --accent-yellow: #f6c769;
+        --cream: #fff8ef;
+        --ink: #3f4852;
+        --muted: #66727e;
+        --line: #eadfda;
+        --background: #fbfaf8;
+        --surface: #ffffff;
+        --shadow: 0 22px 54px rgba(216, 79, 115, 0.13);
+        --radius: 26px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        overflow-x: hidden;
+        margin: 0;
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+        font-weight: 500;
+        line-height: 1.85;
+        letter-spacing: 0;
+        background:
+          radial-gradient(circle at 12% 8%, rgba(246, 199, 105, 0.24), transparent 27%),
+          radial-gradient(circle at 92% 12%, rgba(101, 196, 197, 0.2), transparent 28%),
+          linear-gradient(180deg, var(--background) 0%, var(--cream) 48%, #fff 100%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .hero-band {
+        background: linear-gradient(180deg, #fff 0%, #fff8ef 100%);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.88fr) minmax(430px, 1.12fr);
+        gap: 56px;
+        align-items: center;
+        min-height: 720px;
+        padding: 82px 0 76px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        max-width: 100%;
+        min-height: 40px;
+        padding: 0 16px;
+        color: var(--accent-pink-deep);
+        background: var(--accent-pink-pale);
+        border: 1px solid rgba(216, 79, 115, 0.18);
+        border-radius: 999px;
+        font-size: 15px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        margin: 22px 0 18px;
+        max-width: 640px;
+        font-size: clamp(44px, 5.8vw, 76px);
+        line-height: 1.02;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(30px, 4vw, 46px);
+      }
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 22px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .lead {
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 22px;
+        border-radius: 999px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        color: #fff;
+        background: var(--accent-pink);
+        box-shadow: 0 14px 28px rgba(238, 111, 143, 0.22);
+      }
+
+      .button.secondary {
+        color: var(--accent-pink-deep);
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .hero-visual {
+        min-width: 0;
+      }
+
+      .screen-pair {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        align-items: center;
+        width: 100%;
+      }
+
+      .screen-frame {
+        overflow: hidden;
+        margin: 0;
+        min-width: 0;
+        max-width: 100%;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(234, 223, 218, 0.92);
+        border-radius: 38px;
+        box-shadow: var(--shadow);
+      }
+
+      .screen-frame.second {
+        transform: translateY(34px);
+      }
+
+      .screen-frame img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 0.65;
+        object-fit: cover;
+        object-position: top center;
+        border-radius: 28px;
+      }
+
+      section {
+        padding: 104px 0;
+      }
+
+      .section-head {
+        display: grid;
+        gap: 14px;
+        max-width: 900px;
+        margin-bottom: 34px;
+      }
+
+      .section-head p {
+        color: var(--muted);
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      .cards,
+      .prompt-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .card,
+      .step,
+      .prompt-card,
+      .template-card,
+      .check-card {
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(234, 223, 218, 0.9);
+        border-radius: var(--radius);
+        box-shadow: 0 12px 34px rgba(63, 72, 82, 0.07);
+      }
+
+      .card {
+        display: grid;
+        gap: 14px;
+        padding: 24px;
+      }
+
+      .card-icon {
+        display: grid;
+        place-items: center;
+        width: 64px;
+        height: 64px;
+        color: var(--accent-pink-deep);
+        background: var(--accent-pink-pale);
+        border-radius: 22px;
+        font-weight: 900;
+      }
+
+      .card-icon.mint {
+        color: #217c7d;
+        background: var(--accent-mint-pale);
+      }
+
+      .card-icon.yellow {
+        color: #95670a;
+        background: #fff3d7;
+      }
+
+      .card p,
+      .step p,
+      .prompt-card p,
+      li {
+        color: var(--muted);
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 16px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 70px minmax(0, 1fr) 150px;
+        gap: 22px;
+        align-items: center;
+        padding: 22px;
+      }
+
+      .num {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        color: #fff;
+        background: var(--accent-pink);
+        border-radius: 20px;
+        font-family: "Zen Maru Gothic", sans-serif;
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .step-body {
+        display: grid;
+        gap: 10px;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 12px;
+        color: var(--accent-pink-deep);
+        background: var(--accent-pink-pale);
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .step-art {
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(229, 246, 246, 0.8);
+      }
+
+      .step-art img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1.25;
+        object-fit: cover;
+      }
+
+      .prompt-card {
+        display: grid;
+        gap: 14px;
+        padding: 24px;
+      }
+
+      pre {
+        overflow: auto;
+        margin: 0;
+        padding: 18px;
+        color: #44505b;
+        background: #fff8ef;
+        border: 1px solid rgba(234, 223, 218, 0.9);
+        border-radius: 18px;
+        font: 700 13px/1.8 "Noto Sans JP", sans-serif;
+        white-space: pre-wrap;
+      }
+
+      .template-card {
+        padding: 24px;
+      }
+
+      .template-card pre {
+        max-height: 620px;
+      }
+
+      .check-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .check-card {
+        padding: 20px;
+      }
+
+      .footer-note {
+        padding: 42px 0 72px;
+        color: var(--muted);
+        text-align: center;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      @media (max-width: 920px) {
+        .hero,
+        .cards,
+        .prompt-grid,
+        .check-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+          padding: 52px 0 70px;
+        }
+
+        .screen-pair {
+          max-width: 620px;
+          margin: 0 auto;
+        }
+
+        .step {
+          grid-template-columns: 54px minmax(0, 1fr);
+        }
+
+        .step-art {
+          grid-column: 1 / -1;
+          max-width: 220px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          width: min(100% - 28px, 1120px);
+        }
+
+        h1 {
+          font-size: clamp(38px, 12vw, 56px);
+        }
+
+        section {
+          padding: 72px 0;
+        }
+
+        .screen-pair {
+          grid-template-columns: 1fr;
+          width: min(100%, 340px);
+          max-width: 100%;
+          margin: 0 auto;
+          gap: 10px;
+        }
+
+        .screen-frame {
+          padding: 7px;
+          border-radius: 26px;
+        }
+
+        .screen-frame.second {
+          transform: none;
+        }
+
+        .screen-frame img {
+          border-radius: 20px;
+        }
+      }
+    </style>
   </head>
-  <body class="recipe-page">
-    <header class="site-header">
-      <nav aria-label="主要ナビゲーション">
-        <a href="./index.html">LPを見る</a>
-        <a href="#flow">流れ</a>
-        <a href="#prompts">依頼例</a>
-        <a href="#template">テンプレート</a>
-        <a href="#checklist">公開前チェック</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="recipe-hero">
-        <div class="recipe-hero-copy">
-          <span class="recipe-label">制作レシピ</span>
-          <h1><span>Codexで</span><span>LPを作る流れ</span></h1>
-          <p class="lead">
-            目的整理、コピー、デザイン、画像生成、検証、GitHub Pages公開まで。今回のGPT-5.5プロモーションLPを作った手順を、再利用しやすい形にまとめました。
-          </p>
-          <div class="actions">
-            <a class="button primary" href="#flow">制作の流れを見る</a>
-            <a class="button secondary" href="#template">デザインテンプレートを見る</a>
+  <body>
+    <div class="hero-band">
+      <main class="page">
+        <header class="hero">
+          <div>
+            <span class="eyebrow">GPT-5.5 デザインデモページのレシピ</span>
+            <h1>GPT-5.5<br />デザインデモ<br />制作レシピ</h1>
+            <p class="lead">
+              Codexで、LPの構成、コピー、イラスト、HTML/CSS、公開前チェックまで整えた流れです。別テーマで同じトーンを使えるよう、手順とデザインガイドを分けてまとめました。
+            </p>
+            <nav class="actions" aria-label="関連リンク">
+              <a class="button primary" href="./">デモLPを開く</a>
+              <a class="button secondary" href="#flow">制作の流れを見る</a>
+            </nav>
           </div>
+          <div class="hero-visual" aria-label="デモLPのスクリーンショット">
+            <div class="screen-pair">
+              <figure class="screen-frame">
+                <img src="./assets/recipe-lp-part-1.png" alt="GPT-5.5デザインデモページ前半のスクリーンショット" />
+              </figure>
+              <figure class="screen-frame second">
+                <img src="./assets/recipe-lp-part-2.png" alt="GPT-5.5デザインデモページ後半のスクリーンショット" />
+              </figure>
+            </div>
+          </div>
+        </header>
+      </main>
+    </div>
+
+    <main class="page">
+      <section>
+        <div class="section-head">
+          <span class="eyebrow">完成物</span>
+          <h2>最終的にできたもの</h2>
+          <p>LP本体、制作レシピ、再利用できるデザインガイドを、社内で共有しやすいURL付きの形にしました。</p>
         </div>
-        <div class="art-frame recipe-hero-art">
-          <img src="./assets/gpt55-design-hero-anime-adventure-cleanbottom.png" alt="CodexでLP制作を進めるイメージ" />
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">LP</div>
+            <h3>デザインデモLP</h3>
+            <p>GPT-5.5でできることを、資料作成、Web制作、調べ物、ソフトウェア開発などに分けて見せるページです。</p>
+          </article>
+          <article class="card">
+            <div class="card-icon mint">R</div>
+            <h3>制作レシピページ</h3>
+            <p>どんな順番で依頼し、どの観点で直し、公開前に何を確認したかを読めるページです。</p>
+          </article>
+          <article class="card">
+            <div class="card-icon yellow">URL</div>
+            <h3>共有用の公開URL</h3>
+            <p>デモLPとレシピを、同じGitHub Pages上で開けるようにまとめました。</p>
+          </article>
         </div>
       </section>
 
-      <section class="section recipe-summary">
+      <section id="flow">
         <div class="section-head">
-          <h2><span class="heading-line">完成までに</span><span class="heading-line">やったこと</span></h2>
+          <span class="eyebrow">作り方</span>
+          <h2>完成までの流れ</h2>
+          <p>最初から固定案を作り込まず、画面を見ながら、言葉、画像、余白、公開リスクを順番に詰めました。</p>
         </div>
-        <div class="summary-grid">
-          <article>
-            <span>成果物</span>
-            <h3>公開できるLPにした</h3>
-            <p>縦長の静的ページ、イラスト、ベンチマーク比較、利用導線、Codex動画をまとめました。</p>
-          </article>
-          <article>
-            <span>進め方</span>
-            <h3>会話で何度も直した</h3>
-            <p>見出し、画像、余白、色、文字組み、公開リスクを、画面確認しながら反復しました。</p>
-          </article>
-          <article>
-            <span>公開</span>
-            <h3>最小構成でGitHub Pagesへ</h3>
-            <p>公開用フォルダだけを作り、不要ファイル、メモ、未使用画像を含めない形にしました。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="flow" class="section recipe-flow-section">
-        <div class="section-head">
-          <h2><span class="heading-line">制作の流れ</span></h2>
-          <p>実際の長い会話を、社内で再現しやすいように10ステップへ圧縮しています。</p>
-        </div>
-        <ol class="flow-list">
-          <li>
-            <span>01</span>
-            <div>
+        <div class="timeline">
+          <article class="step">
+            <div class="num">1</div>
+            <div class="step-body">
               <h3>目的を決める</h3>
-              <p>「GPT-5.5はデザインも強くなった」と社内に伝えるLPにする、と主メッセージを固定しました。</p>
+              <p>「GPT-5.5はデザインも強くなりました」を主メッセージにし、社内で使ってみたくなるLPにすると決めました。</p>
+              <div class="chips"><span class="chip">主メッセージ</span><span class="chip">社内共有</span><span class="chip">日本語LP</span></div>
             </div>
-          </li>
-          <li>
-            <span>02</span>
-            <div>
-              <h3>参考トーンを集める</h3>
-              <p>既存サイトのフォント、ピンク、丸み、親しみやすい日本語の雰囲気を確認しました。</p>
+            <div class="step-art"><img src="./assets/gpt55-design-hero-anime-adventure-cleanbottom.png" alt="" /></div>
+          </article>
+          <article class="step">
+            <div class="num">2</div>
+            <div class="step-body">
+              <h3>参考トーンを決める</h3>
+              <p>明るい白背景、ピンク、丸い見出し、親しみやすい日本語を基準にし、硬すぎるSaaS風から離しました。</p>
+              <div class="chips"><span class="chip">白背景</span><span class="chip">ピンク</span><span class="chip">Zen Maru Gothic</span></div>
             </div>
-          </li>
-          <li>
-            <span>03</span>
-            <div>
+            <div class="step-art"><img src="./assets/gpt55-slides-lively-safe.png" alt="" /></div>
+          </article>
+          <article class="step">
+            <div class="num">3</div>
+            <div class="step-body">
               <h3>ファーストビューを作る</h3>
-              <p>「GPT-5.5は、デザインも強くなりました」を冒頭に置き、イラストとボタンを組みました。</p>
+              <p>見出し、導入文、ボタン、メインビジュアルを組み、最初に伝えることを一つに絞りました。</p>
+              <div class="chips"><span class="chip">見出し</span><span class="chip">導線</span><span class="chip">主役画像</span></div>
             </div>
-          </li>
-          <li>
-            <span>04</span>
-            <div>
-              <h3>縦長LPへ広げる</h3>
-              <p>資料作成、Web制作、調べ物、ソフトウェア開発、Excel、ビジネス文章まで、用途別に整理しました。</p>
+            <div class="step-art"><img src="./assets/recipe-lp-top.png" alt="" /></div>
+          </article>
+          <article class="step">
+            <div class="num">4</div>
+            <div class="step-body">
+              <h3>できることを整理する</h3>
+              <p>資料作成、Web制作、調べ物、ソフトウェア開発、Excel、ビジネス文章に分け、読み手が用途を想像しやすくしました。</p>
+              <div class="chips"><span class="chip">資料作成</span><span class="chip">Web制作</span><span class="chip">仕事別</span></div>
             </div>
-          </li>
-          <li>
-            <span>05</span>
-            <div>
-              <h3>イラストを調整する</h3>
-              <p>人物、道具、色、構図が単調にならないように作り直し、画像内の文字は極力なくしました。</p>
+            <div class="step-art"><img src="./assets/gpt55-web-focused.png" alt="" /></div>
+          </article>
+          <article class="step">
+            <div class="num">5</div>
+            <div class="step-body">
+              <h3>イラストを作り直す</h3>
+              <p>人物ばかり、同じ構図、小物の詰め込みを避け、各セクションの主役が一目で分かる絵に寄せました。</p>
+              <div class="chips"><span class="chip">構図差</span><span class="chip">主役を大きく</span><span class="chip">文字なし</span></div>
             </div>
-          </li>
-          <li>
-            <span>06</span>
-            <div>
-              <h3>日本語コピーを磨く</h3>
-              <p>意味の薄い英語、重複した説明、見出しの句点を削り、短く伝わる言葉に直しました。</p>
+            <div class="step-art"><img src="./assets/gpt55-research-adventure.png" alt="" /></div>
+          </article>
+          <article class="step">
+            <div class="num">6</div>
+            <div class="step-body">
+              <h3>日本語を削って磨く</h3>
+              <p>重複した説明、意味の薄い英語、見出しの句点を削り、見出しだけでも内容が伝わるようにしました。</p>
+              <div class="chips"><span class="chip">重複削除</span><span class="chip">句点なし</span><span class="chip">自然な日本語</span></div>
             </div>
-          </li>
-          <li>
-            <span>07</span>
-            <div>
+            <div class="step-art"><img src="./assets/gpt55-business-writing-adventure.png" alt="" /></div>
+          </article>
+          <article class="step">
+            <div class="num">7</div>
+            <div class="step-body">
               <h3>比較指標を入れる</h3>
-              <p>OpenAIの公開評価から、開発・数学・専門業務・文書業務の4軸を選びました。</p>
+              <p>開発、数学、専門業務、文書業務の4軸で、他社AIとの比較を直感的に見られるグラフにしました。</p>
+              <div class="chips"><span class="chip">4指標</span><span class="chip">横棒グラフ</span><span class="chip">説明を短く</span></div>
             </div>
-          </li>
-          <li>
-            <span>08</span>
-            <div>
-              <h3>利用導線を作る</h3>
-              <p>WebからGPT-5.5を使う導線、Codexアプリの説明、動画リンクを追加しました。</p>
+            <div class="step-art"><img src="./assets/gpt55-software-adventure.png" alt="" /></div>
+          </article>
+          <article class="step">
+            <div class="num">8</div>
+            <div class="step-body">
+              <h3>使い始める導線を作る</h3>
+              <p>WebからGPT-5.5を使う導線と、CodexアプリでGPT-5.5を使う導線を分け、迷いにくくしました。</p>
+              <div class="chips"><span class="chip">Web版</span><span class="chip">Codexアプリ</span><span class="chip">動画</span></div>
             </div>
-          </li>
-          <li>
-            <span>09</span>
-            <div>
-              <h3>公開前に監査する</h3>
-              <p>公開用ファイルだけを分離し、秘密情報、ローカルパス、不要メタデータ、未使用ファイルを除外しました。</p>
+            <div class="step-art"><img src="./assets/gpt55-spreadsheet-adventure.png" alt="" /></div>
+          </article>
+          <article class="step">
+            <div class="num">9</div>
+            <div class="step-body">
+              <h3>公開前に確認する</h3>
+              <p>公開用ファイルだけを分離し、秘密情報、ローカルパス、未使用ファイル、外部読み込み先を確認しました。</p>
+              <div class="chips"><span class="chip">公開用分離</span><span class="chip">情報確認</span><span class="chip">表示確認</span></div>
             </div>
-          </li>
-          <li>
-            <span>10</span>
-            <div>
+            <div class="step-art"><img src="./assets/recipe-lp-part-2.png" alt="" /></div>
+          </article>
+          <article class="step">
+            <div class="num">10</div>
+            <div class="step-body">
               <h3>GitHub Pagesで公開する</h3>
-              <p>公開リポジトリを作成し、PagesのURLで表示、HTTPS、更新反映を確認しました。</p>
+              <p>会社GitHubの公開リポジトリへアップロードし、URLで表示、HTTPS、更新反映を確認しました。</p>
+              <div class="chips"><span class="chip">GitHub Pages</span><span class="chip">公開URL</span><span class="chip">反映確認</span></div>
             </div>
-          </li>
-        </ol>
-      </section>
-
-      <section class="section shot-section">
-        <div class="section-head">
-          <h2><span class="heading-line">やり取りの</span><span class="heading-line">規模感</span></h2>
-          <p>会話ログを社内共有用に整理すると、次のような反復でした。</p>
-        </div>
-        <div class="shot-grid">
-          <article>
-            <b>約50回以上</b>
-            <span>追加・修正依頼</span>
-            <p>初期相談から公開後の微修正まで、細かく確認しながら進めました。</p>
-          </article>
-          <article>
-            <b>15前後</b>
-            <span>大きな制作ショット</span>
-            <p>目的、構成、画像、コピー、比較、公開監査などのまとまりで見るとこの程度です。</p>
-          </article>
-          <article>
-            <b>1ページ</b>
-            <span>公開用の最小成果物</span>
-            <p>最終的には静的HTML、CSS、使用画像だけに絞って公開しました。</p>
+            <div class="step-art"><img src="./assets/recipe-lp-part-1.png" alt="" /></div>
           </article>
         </div>
       </section>
 
-      <section id="prompts" class="section prompt-section">
+      <section hidden data-restore-section="interaction-counts">
         <div class="section-head">
-          <h2><span class="heading-line">依頼の</span><span class="heading-line">型</span></h2>
-          <p>同じように作る場合は、最初から完璧な指示を出すより、段階ごとに見て直す方が進めやすいです。</p>
+          <span class="eyebrow">やり取りの規模感</span>
+          <h2>改善依頼の内訳</h2>
+          <p>回数や内訳は、必要になった場合に戻せるよう非表示で残しています。</p>
+        </div>
+      </section>
+
+      <section id="prompts">
+        <div class="section-head">
+          <span class="eyebrow">依頼例</span>
+          <h2>同じ進め方をするための型</h2>
+          <p>最初から長い仕様書にせず、目的、初版、レビュー、公開前チェックの順に渡すと進めやすくなります。</p>
         </div>
         <div class="prompt-grid">
-          <article>
+          <article class="prompt-card">
             <h3>最初の依頼</h3>
             <pre><code>目的は、社内向けに[テーマ]を伝えるLPを作ることです。
 ターゲットは[読み手]です。
-まず構成案を出し、その後HTML/CSSで静的ページを作ってください。
-デザインは、明るく親しみやすく、日本語の読みやすさを重視してください。</code></pre>
+まず構成案を出し、その後HTML/CSSで静的ページを作ってください。</code></pre>
           </article>
-          <article>
+          <article class="prompt-card">
             <h3>デザイン修正の依頼</h3>
             <pre><code>見出し、余白、画像、色、文字組みを客観的にレビューしてください。
-冗長な説明は削り、見た人がすぐ理解できる構成に直してください。
-画像は同じタッチで統一しつつ、構図と主役のオブジェクトに差を出してください。</code></pre>
+冗長な説明は削り、見た人がすぐ理解できる構成に直してください。</code></pre>
           </article>
-          <article>
+          <article class="prompt-card">
             <h3>公開前の依頼</h3>
             <pre><code>公開用ファイルだけを分離してください。
-秘密情報、ローカルパス、未使用ファイル、画像メタデータ、外部読み込み先を確認してください。
-問題がなければGitHub Pagesで公開し、URLで表示確認してください。</code></pre>
+秘密情報、ローカルパス、未使用ファイル、画像メタデータ、外部読み込み先を確認してください。</code></pre>
           </article>
         </div>
       </section>
 
-      <section id="template" class="section template-section">
+      <section id="template">
         <div class="section-head">
-          <h2><span class="heading-line">再利用できる</span><span class="heading-line">デザインガイド</span></h2>
-          <p>下のテンプレートに、作りたいテーマや内容を足してAIへ渡すと、今回に近いトーンで別用途にも展開できます。</p>
+          <span class="eyebrow">テンプレート</span>
+          <h2>別テーマにも使えるデザインガイド</h2>
+          <p>具体的な内容は入れず、見た目と進め方だけを渡せる形にしています。作りたいテーマと一緒にAIへ渡してください。</p>
         </div>
-        <pre class="design-template"><code>---
+        <article class="template-card">
+          <pre><code>---
 version: alpha
-name: Warm Friendly Japanese LP Tone
+name: Warm Friendly Japanese Demo Tone
 description: 明るく親しみやすい日本語向けLPや資料に使う、再利用可能なデザイントーン。
 tokens:
   color:
@@ -227,67 +661,36 @@ tokens:
     line: "#EADFDA"
     background: "#FBFAF8"
     surface: "#FFFFFF"
-    surfaceWarm: "#F6F0EC"
   typography:
     display:
       fontFamily: "Zen Maru Gothic"
-      fallback: "Noto Sans JP, Hiragino Maru Gothic ProN, Yu Gothic, Meiryo, sans-serif"
       weight: 900
       lineHeight: 1.08
       letterSpacing: 0
     body:
       fontFamily: "Noto Sans JP"
-      fallback: "Hiragino Kaku Gothic ProN, Yu Gothic, Meiryo, sans-serif"
       weight: 500
       lineHeight: 1.85
       letterSpacing: 0
   shape:
     superellipse:
       description: "角丸長方形ではなく、四隅がなめらかに丸く膨らむスーパー楕円を使う。"
-      clipPath: "M .38 0 L .62 0 C .84 0 1 .16 1 .38 L 1 .62 C 1 .84 .84 1 .62 1 L .38 1 C .16 1 0 .84 0 .62 L 0 .38 C 0 .16 .16 0 .38 0 Z"
     cardRadius: "26px"
     pillRadius: "999px"
-  spacing:
-    sectionY: "96px-132px"
-    desktopX: "56px-72px"
-    mobileX: "20px"
-components:
-  buttonPrimary:
-    background: "{tokens.color.accentPink}"
-    text: "#FFFFFF"
-    shape: "pill"
-    tone: "明るく押しやすい。影は薄いピンクで柔らかく。"
-  buttonSecondary:
-    background: "{tokens.color.surface}"
-    text: "{tokens.color.accentPinkDeep}"
-    border: "{tokens.color.line}"
-    shape: "pill"
-  card:
-    background: "rgba(255,255,255,0.78)"
-    border: "1px solid rgba(234,223,218,0.9)"
-    radius: "{tokens.shape.cardRadius}"
-    shadow: "薄く、紙面が浮く程度"
 ---
 
-# Warm Friendly Japanese LP Tone
-
-## Purpose
-
-このデザインは、専門的な内容を、社内や顧客に「見てみたい」「使ってみたい」と思ってもらうためのもの。
-主役は技術や機能そのものではなく、読み手にとって何が楽になるか、何ができるようになるかに置く。
+# Warm Friendly Japanese Demo Tone
 
 ## Visual Direction
 
-- 明るい白背景を基本に、ピンク、ミント、やわらかい黄色、チャコールを組み合わせる。
-- ピンクだけで甘くなりすぎないよう、ミントとチャコールで締める。
-- ダークテーマ、青紫グラデーション、硬いSaaS風、過度な高級感は避ける。
-- かわいさは丸み、余白、親しみやすいイラストで出す。装飾を増やしてごまかさない。
+- 白背景を基本に、ピンク、ミント、やわらかい黄色、チャコールを組み合わせる。
+- かわいさは丸み、余白、親しみやすいイラストで出す。
+- ダークテーマ、硬いSaaS風、意味の薄い英語ラベルは避ける。
 
 ## Typography
 
-- 見出しは Zen Maru Gothic を使う。太く、丸く、読みやすく。
-- 本文は Noto Sans JP を使う。小さくしすぎず、投影でも読めるサイズにする。
-- 文字間は詰めない。letter-spacing: 0 を基本にする。
+- 見出しは Zen Maru Gothic。太く、丸く、読みやすく。
+- 本文は Noto Sans JP。小さくしすぎず、投影でも読めるサイズにする。
 - 見出しに句点は付けない。読点は意味の区切りとして必要な場合だけ使う。
 - 日本語見出しが1文字だけ改行されないよう、意味単位で改行を制御する。
 
@@ -296,60 +699,48 @@ components:
 - 1セクション1メッセージ。見出しで伝わるなら本文は短くする。
 - 本文は見出しの繰り返しにせず、具体例や補足だけを書く。
 - 画像と文章は交互に配置し、すべて同じ構図にしない。
-- カードは比較、手順、機能一覧など、構造化が必要な場所だけに使う。
-
-## Shapes
-
-- 主要ビジュアルや画像枠はスーパー楕円で切り抜く。
-- 切り抜きで顔、手、PC、主役オブジェクトが欠けないよう、画像側に余白を持たせる。
-- 通常カードは26px前後の角丸。ボタンとラベルはピル型。
 
 ## Illustration
 
-- 日本のファミリー向けTVアニメに近い、丸みのある商業イラストにする。
+- 丸みのある商業イラストにする。
 - 特定作品、特定キャラクター、既存IPの絵柄やロゴはコピーしない。
-- 人物は少しデフォルメし、表情は明るく、目はシンプルで親しみやすく。
-- PCや資料などの道具は物理的に自然に描く。
 - 画像内の文字は入れない。情報はHTML側のテキストで伝える。
 - 1枚の中に小物を詰め込みすぎず、主役のオブジェクトを大きく見せる。
 
 ## Copywriting
 
-- 「すごい」ではなく、読み手の仕事や生活がどう楽になるかを書く。
-- 意味の薄い英語ラベルは避け、UI上の表示は原則日本語にする。
+- 「すごい」ではなく、読み手の仕事がどう楽になるかを書く。
 - 同じ内容をラベル、見出し、本文で繰り返さない。
-- 専門用語は、必要な場合だけ短く説明する。
-
-## Accessibility
-
-- ピンク文字は白背景に小さく置かない。重要な文字は ink を使う。
-- ボタンは十分な高さと余白を持たせる。
-- モバイルで見出しがはみ出さないか、必ずスクリーンショットで確認する。</code></pre>
+- 専門用語は、必要な場合だけ短く説明する。</code></pre>
+        </article>
       </section>
 
-      <section id="checklist" class="section checklist-section">
+      <section id="checklist">
         <div class="section-head">
-          <h2><span class="heading-line">公開前</span><span class="heading-line">チェックリスト</span></h2>
+          <span class="eyebrow">公開前チェック</span>
+          <h2>公開前に確認したこと</h2>
         </div>
         <div class="check-grid">
-          <article>
+          <article class="check-card">
             <h3>ファイル</h3>
             <p>公開用フォルダだけに、HTML、CSS、使用画像、必要な設定ファイルだけを入れる。</p>
           </article>
-          <article>
+          <article class="check-card">
             <h3>情報</h3>
             <p>APIキー、トークン、ローカルパス、社内メモ、未公開情報、不要なユーザー名がないか検索する。</p>
           </article>
-          <article>
+          <article class="check-card">
             <h3>画像</h3>
             <p>未使用画像を含めず、必要なら再保存してメタデータを落とす。画像内の文字崩れも確認する。</p>
           </article>
-          <article>
+          <article class="check-card">
             <h3>表示</h3>
             <p>PCとスマホ幅でスクリーンショットを取り、文字組み、余白、画像の見切れを確認する。</p>
           </article>
         </div>
       </section>
     </main>
+
+    <footer class="page footer-note">このページは、GPT-5.5 デザインデモLPの制作レシピです。</footer>
   </body>
 </html>
