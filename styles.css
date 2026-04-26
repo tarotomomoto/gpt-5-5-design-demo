@@ -246,9 +246,17 @@ h3 {
   grid-template-columns: minmax(0, 0.72fr) minmax(420px, 1fr);
   gap: clamp(28px, 5vw, 68px);
   align-items: center;
-  min-height: 436px;
+  height: clamp(430px, 36vw, 500px);
   padding: clamp(28px, 4vw, 48px);
   border-radius: 30px;
+}
+
+.showcase-copy {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .showcase-grid article:nth-child(even) .showcase-copy {
@@ -261,7 +269,9 @@ h3 {
 
 .showcase-grid .art-frame {
   width: 100%;
+  height: clamp(258px, 25vw, 338px);
   aspect-ratio: 16 / 10;
+  align-self: center;
 }
 
 .showcase-grid span,
@@ -583,6 +593,14 @@ h3 {
   .video-panel,
   .benchmark-layout {
     grid-template-columns: 1fr;
+  }
+
+  .showcase-grid article {
+    height: auto;
+  }
+
+  .showcase-grid .art-frame {
+    height: auto;
   }
 
   .showcase-grid article:nth-child(even) .showcase-copy,
