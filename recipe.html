@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://img.youtube.com data:; frame-src https://www.youtube-nocookie.com; connect-src 'none'; form-action 'none'; upgrade-insecure-requests"
+    />
+    <title>GPT-5.5 LP制作レシピ</title>
+    <meta
+      name="description"
+      content="GPT-5.5のプロモーションLPをCodexで作った制作過程、依頼の流れ、再利用できるデザインガイドをまとめた社内共有用ページ。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="recipe-page">
+    <header class="site-header">
+      <nav aria-label="主要ナビゲーション">
+        <a href="./index.html">LPを見る</a>
+        <a href="#flow">流れ</a>
+        <a href="#prompts">依頼例</a>
+        <a href="#template">テンプレート</a>
+        <a href="#checklist">公開前チェック</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="recipe-hero">
+        <div class="recipe-hero-copy">
+          <span class="recipe-label">制作レシピ</span>
+          <h1><span>Codexで</span><span>LPを作る流れ</span></h1>
+          <p class="lead">
+            目的整理、コピー、デザイン、画像生成、検証、GitHub Pages公開まで。今回のGPT-5.5プロモーションLPを作った手順を、再利用しやすい形にまとめました。
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#flow">制作の流れを見る</a>
+            <a class="button secondary" href="#template">デザインテンプレートを見る</a>
+          </div>
+        </div>
+        <div class="art-frame recipe-hero-art">
+          <img src="./assets/gpt55-design-hero-anime-adventure-cleanbottom.png" alt="CodexでLP制作を進めるイメージ" />
+        </div>
+      </section>
+
+      <section class="section recipe-summary">
+        <div class="section-head">
+          <h2><span class="heading-line">完成までに</span><span class="heading-line">やったこと</span></h2>
+        </div>
+        <div class="summary-grid">
+          <article>
+            <span>成果物</span>
+            <h3>公開できるLPにした</h3>
+            <p>縦長の静的ページ、イラスト、ベンチマーク比較、利用導線、Codex動画をまとめました。</p>
+          </article>
+          <article>
+            <span>進め方</span>
+            <h3>会話で何度も直した</h3>
+            <p>見出し、画像、余白、色、文字組み、公開リスクを、画面確認しながら反復しました。</p>
+          </article>
+          <article>
+            <span>公開</span>
+            <h3>最小構成でGitHub Pagesへ</h3>
+            <p>公開用フォルダだけを作り、不要ファイル、メモ、未使用画像を含めない形にしました。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="flow" class="section recipe-flow-section">
+        <div class="section-head">
+          <h2><span class="heading-line">制作の流れ</span></h2>
+          <p>実際の長い会話を、社内で再現しやすいように10ステップへ圧縮しています。</p>
+        </div>
+        <ol class="flow-list">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>目的を決める</h3>
+              <p>「GPT-5.5はデザインも強くなった」と社内に伝えるLPにする、と主メッセージを固定しました。</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>参考トーンを集める</h3>
+              <p>既存サイトのフォント、ピンク、丸み、親しみやすい日本語の雰囲気を確認しました。</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>ファーストビューを作る</h3>
+              <p>「GPT-5.5は、デザインも強くなりました」を冒頭に置き、イラストとボタンを組みました。</p>
+            </div>
+          </li>
+          <li>
+            <span>04</span>
+            <div>
+              <h3>縦長LPへ広げる</h3>
+              <p>資料作成、Web制作、調べ物、ソフトウェア開発、Excel、ビジネス文章まで、用途別に整理しました。</p>
+            </div>
+          </li>
+          <li>
+            <span>05</span>
+            <div>
+              <h3>イラストを調整する</h3>
+              <p>人物、道具、色、構図が単調にならないように作り直し、画像内の文字は極力なくしました。</p>
+            </div>
+          </li>
+          <li>
+            <span>06</span>
+            <div>
+              <h3>日本語コピーを磨く</h3>
+              <p>意味の薄い英語、重複した説明、見出しの句点を削り、短く伝わる言葉に直しました。</p>
+            </div>
+          </li>
+          <li>
+            <span>07</span>
+            <div>
+              <h3>比較指標を入れる</h3>
+              <p>OpenAIの公開評価から、開発・数学・専門業務・文書業務の4軸を選びました。</p>
+            </div>
+          </li>
+          <li>
+            <span>08</span>
+            <div>
+              <h3>利用導線を作る</h3>
+              <p>WebからGPT-5.5を使う導線、Codexアプリの説明、動画リンクを追加しました。</p>
+            </div>
+          </li>
+          <li>
+            <span>09</span>
+            <div>
+              <h3>公開前に監査する</h3>
+              <p>公開用ファイルだけを分離し、秘密情報、ローカルパス、不要メタデータ、未使用ファイルを除外しました。</p>
+            </div>
+          </li>
+          <li>
+            <span>10</span>
+            <div>
+              <h3>GitHub Pagesで公開する</h3>
+              <p>公開リポジトリを作成し、PagesのURLで表示、HTTPS、更新反映を確認しました。</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section shot-section">
+        <div class="section-head">
+          <h2><span class="heading-line">やり取りの</span><span class="heading-line">規模感</span></h2>
+          <p>会話ログを社内共有用に整理すると、次のような反復でした。</p>
+        </div>
+        <div class="shot-grid">
+          <article>
+            <b>約50回以上</b>
+            <span>追加・修正依頼</span>
+            <p>初期相談から公開後の微修正まで、細かく確認しながら進めました。</p>
+          </article>
+          <article>
+            <b>15前後</b>
+            <span>大きな制作ショット</span>
+            <p>目的、構成、画像、コピー、比較、公開監査などのまとまりで見るとこの程度です。</p>
+          </article>
+          <article>
+            <b>1ページ</b>
+            <span>公開用の最小成果物</span>
+            <p>最終的には静的HTML、CSS、使用画像だけに絞って公開しました。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="prompts" class="section prompt-section">
+        <div class="section-head">
+          <h2><span class="heading-line">依頼の</span><span class="heading-line">型</span></h2>
+          <p>同じように作る場合は、最初から完璧な指示を出すより、段階ごとに見て直す方が進めやすいです。</p>
+        </div>
+        <div class="prompt-grid">
+          <article>
+            <h3>最初の依頼</h3>
+            <pre><code>目的は、社内向けに[テーマ]を伝えるLPを作ることです。
+ターゲットは[読み手]です。
+まず構成案を出し、その後HTML/CSSで静的ページを作ってください。
+デザインは、明るく親しみやすく、日本語の読みやすさを重視してください。</code></pre>
+          </article>
+          <article>
+            <h3>デザイン修正の依頼</h3>
+            <pre><code>見出し、余白、画像、色、文字組みを客観的にレビューしてください。
+冗長な説明は削り、見た人がすぐ理解できる構成に直してください。
+画像は同じタッチで統一しつつ、構図と主役のオブジェクトに差を出してください。</code></pre>
+          </article>
+          <article>
+            <h3>公開前の依頼</h3>
+            <pre><code>公開用ファイルだけを分離してください。
+秘密情報、ローカルパス、未使用ファイル、画像メタデータ、外部読み込み先を確認してください。
+問題がなければGitHub Pagesで公開し、URLで表示確認してください。</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section id="template" class="section template-section">
+        <div class="section-head">
+          <h2><span class="heading-line">再利用できる</span><span class="heading-line">デザインガイド</span></h2>
+          <p>下のテンプレートに、作りたいテーマや内容を足してAIへ渡すと、今回に近いトーンで別用途にも展開できます。</p>
+        </div>
+        <pre class="design-template"><code>---
+version: alpha
+name: Warm Friendly Japanese LP Tone
+description: 明るく親しみやすい日本語向けLPや資料に使う、再利用可能なデザイントーン。
+tokens:
+  color:
+    accentPink: "#EE6F8F"
+    accentPinkDeep: "#D84F73"
+    accentPinkPale: "#FDE8EE"
+    accentMint: "#65C4C5"
+    accentMintPale: "#E5F6F6"
+    accentYellow: "#F6C769"
+    cream: "#FFF8EF"
+    ink: "#3F4852"
+    mutedText: "#66727E"
+    line: "#EADFDA"
+    background: "#FBFAF8"
+    surface: "#FFFFFF"
+    surfaceWarm: "#F6F0EC"
+  typography:
+    display:
+      fontFamily: "Zen Maru Gothic"
+      fallback: "Noto Sans JP, Hiragino Maru Gothic ProN, Yu Gothic, Meiryo, sans-serif"
+      weight: 900
+      lineHeight: 1.08
+      letterSpacing: 0
+    body:
+      fontFamily: "Noto Sans JP"
+      fallback: "Hiragino Kaku Gothic ProN, Yu Gothic, Meiryo, sans-serif"
+      weight: 500
+      lineHeight: 1.85
+      letterSpacing: 0
+  shape:
+    superellipse:
+      description: "角丸長方形ではなく、四隅がなめらかに丸く膨らむスーパー楕円を使う。"
+      clipPath: "M .38 0 L .62 0 C .84 0 1 .16 1 .38 L 1 .62 C 1 .84 .84 1 .62 1 L .38 1 C .16 1 0 .84 0 .62 L 0 .38 C 0 .16 .16 0 .38 0 Z"
+    cardRadius: "26px"
+    pillRadius: "999px"
+  spacing:
+    sectionY: "96px-132px"
+    desktopX: "56px-72px"
+    mobileX: "20px"
+components:
+  buttonPrimary:
+    background: "{tokens.color.accentPink}"
+    text: "#FFFFFF"
+    shape: "pill"
+    tone: "明るく押しやすい。影は薄いピンクで柔らかく。"
+  buttonSecondary:
+    background: "{tokens.color.surface}"
+    text: "{tokens.color.accentPinkDeep}"
+    border: "{tokens.color.line}"
+    shape: "pill"
+  card:
+    background: "rgba(255,255,255,0.78)"
+    border: "1px solid rgba(234,223,218,0.9)"
+    radius: "{tokens.shape.cardRadius}"
+    shadow: "薄く、紙面が浮く程度"
+---
+
+# Warm Friendly Japanese LP Tone
+
+## Purpose
+
+このデザインは、専門的な内容を、社内や顧客に「見てみたい」「使ってみたい」と思ってもらうためのもの。
+主役は技術や機能そのものではなく、読み手にとって何が楽になるか、何ができるようになるかに置く。
+
+## Visual Direction
+
+- 明るい白背景を基本に、ピンク、ミント、やわらかい黄色、チャコールを組み合わせる。
+- ピンクだけで甘くなりすぎないよう、ミントとチャコールで締める。
+- ダークテーマ、青紫グラデーション、硬いSaaS風、過度な高級感は避ける。
+- かわいさは丸み、余白、親しみやすいイラストで出す。装飾を増やしてごまかさない。
+
+## Typography
+
+- 見出しは Zen Maru Gothic を使う。太く、丸く、読みやすく。
+- 本文は Noto Sans JP を使う。小さくしすぎず、投影でも読めるサイズにする。
+- 文字間は詰めない。letter-spacing: 0 を基本にする。
+- 見出しに句点は付けない。読点は意味の区切りとして必要な場合だけ使う。
+- 日本語見出しが1文字だけ改行されないよう、意味単位で改行を制御する。
+
+## Layout
+
+- 1セクション1メッセージ。見出しで伝わるなら本文は短くする。
+- 本文は見出しの繰り返しにせず、具体例や補足だけを書く。
+- 画像と文章は交互に配置し、すべて同じ構図にしない。
+- カードは比較、手順、機能一覧など、構造化が必要な場所だけに使う。
+
+## Shapes
+
+- 主要ビジュアルや画像枠はスーパー楕円で切り抜く。
+- 切り抜きで顔、手、PC、主役オブジェクトが欠けないよう、画像側に余白を持たせる。
+- 通常カードは26px前後の角丸。ボタンとラベルはピル型。
+
+## Illustration
+
+- 日本のファミリー向けTVアニメに近い、丸みのある商業イラストにする。
+- 特定作品、特定キャラクター、既存IPの絵柄やロゴはコピーしない。
+- 人物は少しデフォルメし、表情は明るく、目はシンプルで親しみやすく。
+- PCや資料などの道具は物理的に自然に描く。
+- 画像内の文字は入れない。情報はHTML側のテキストで伝える。
+- 1枚の中に小物を詰め込みすぎず、主役のオブジェクトを大きく見せる。
+
+## Copywriting
+
+- 「すごい」ではなく、読み手の仕事や生活がどう楽になるかを書く。
+- 意味の薄い英語ラベルは避け、UI上の表示は原則日本語にする。
+- 同じ内容をラベル、見出し、本文で繰り返さない。
+- 専門用語は、必要な場合だけ短く説明する。
+
+## Accessibility
+
+- ピンク文字は白背景に小さく置かない。重要な文字は ink を使う。
+- ボタンは十分な高さと余白を持たせる。
+- モバイルで見出しがはみ出さないか、必ずスクリーンショットで確認する。</code></pre>
+      </section>
+
+      <section id="checklist" class="section checklist-section">
+        <div class="section-head">
+          <h2><span class="heading-line">公開前</span><span class="heading-line">チェックリスト</span></h2>
+        </div>
+        <div class="check-grid">
+          <article>
+            <h3>ファイル</h3>
+            <p>公開用フォルダだけに、HTML、CSS、使用画像、必要な設定ファイルだけを入れる。</p>
+          </article>
+          <article>
+            <h3>情報</h3>
+            <p>APIキー、トークン、ローカルパス、社内メモ、未公開情報、不要なユーザー名がないか検索する。</p>
+          </article>
+          <article>
+            <h3>画像</h3>
+            <p>未使用画像を含めず、必要なら再保存してメタデータを落とす。画像内の文字崩れも確認する。</p>
+          </article>
+          <article>
+            <h3>表示</h3>
+            <p>PCとスマホ幅でスクリーンショットを取り、文字組み、余白、画像の見切れを確認する。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
