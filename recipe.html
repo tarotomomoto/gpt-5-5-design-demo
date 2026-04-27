@@ -11,7 +11,7 @@
     <title>GPT-5.5 デザインデモ制作レシピ</title>
     <meta
       name="description"
-      content="GPT-5.5のデザインデモページをCodexで制作した流れと、別テーマにも使えるデザインガイドをまとめた制作レシピ。"
+      content="GPT-5.5のデザインデモページをCodexで制作した流れと、今回のデザインを他の題材でも使うためのガイドをまとめた制作レシピ。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -280,23 +280,25 @@
 
       .step {
         display: grid;
-        grid-template-columns: 70px minmax(0, 1fr) 150px;
+        grid-template-columns: 74px minmax(0, 1fr) 88px;
         gap: 22px;
         align-items: center;
-        padding: 22px;
+        padding: 24px;
       }
 
       .num {
         display: grid;
         place-items: center;
-        width: 54px;
-        height: 54px;
-        color: #fff;
-        background: var(--accent-pink);
-        border-radius: 20px;
+        width: 56px;
+        min-height: 56px;
+        color: var(--accent-pink-deep);
+        background: transparent;
+        border: 0;
+        border-radius: 0;
         font-family: "Zen Maru Gothic", sans-serif;
-        font-size: 22px;
+        font-size: 34px;
         font-weight: 900;
+        line-height: 1;
       }
 
       .step-body {
@@ -323,16 +325,20 @@
       }
 
       .step-art {
-        overflow: hidden;
-        border-radius: 999px;
-        background: rgba(229, 246, 246, 0.8);
+        display: grid;
+        place-items: center;
+        width: 76px;
+        height: 76px;
+        justify-self: end;
+        border-radius: 26px;
+        background: var(--surface);
+        border: 1px solid var(--line);
       }
 
       .step-art img {
-        display: block;
-        width: 100%;
-        aspect-ratio: 1.25;
-        object-fit: cover;
+        width: 58px;
+        height: 58px;
+        object-fit: contain;
       }
 
       .prompt-card {
@@ -402,12 +408,11 @@
         }
 
         .step {
-          grid-template-columns: 54px minmax(0, 1fr);
+          grid-template-columns: 62px minmax(0, 1fr);
         }
 
         .step-art {
-          grid-column: 1 / -1;
-          max-width: 220px;
+          display: none;
         }
       }
 
@@ -455,7 +460,7 @@
             <span class="eyebrow">GPT-5.5 デザインデモページのレシピ</span>
             <h1>GPT-5.5<br />デザインデモ<br />制作レシピ</h1>
             <p class="lead">
-              Codexで、LPの構成、コピー、イラスト、HTML/CSS、公開前チェックまで整えた流れです。別テーマで同じトーンを使えるよう、手順とデザインガイドを分けてまとめました。
+              Codexで、LPの構成、コピー、イラスト、HTML/CSS、公開前チェックまで整えた流れです。今回のデザインを他の題材でも使えるよう、手順とデザインガイドを分けてまとめました。
             </p>
             <nav class="actions" aria-label="関連リンク">
               <a class="button primary" href="./">デモLPを開く</a>
@@ -639,8 +644,8 @@
       <section id="template">
         <div class="section-head">
           <span class="eyebrow">テンプレート</span>
-          <h2>別テーマにも使えるデザインガイド</h2>
-          <p>具体的な内容は入れず、見た目と進め方だけを渡せる形にしています。作りたいテーマと一緒にAIへ渡してください。</p>
+          <h2>今回のデザインを他の題材でも使う</h2>
+          <p>具体的な題材は入れず、見た目と進め方だけを渡せる形にしています。作りたい内容と一緒にAIへ渡してください。</p>
         </div>
         <article class="template-card">
           <pre><code>---
